@@ -288,12 +288,12 @@ class CustomScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Image.asset(
-          'images/bg.jpg',
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          fit: BoxFit.cover,
-        ),
+        // Image.asset(
+        //   'images/bg.jpg',
+        //   height: MediaQuery.of(context).size.height,
+        //   width: MediaQuery.of(context).size.width,
+        //   fit: BoxFit.cover,
+        // ),
         Scaffold(
           backgroundColor: Colors.transparent,
           appBar: appBar,

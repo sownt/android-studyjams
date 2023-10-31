@@ -16,6 +16,10 @@ class HomePage extends GetResponsiveView<HomeController> {
 
   Future<void> _go(value) async {
     final username = ProfileUtils.getUsername(value);
+    if (username.isNumericOnly) {
+      Get.toNamed('/result/$username');
+      return;
+    }
     if (!isUsername(username)) return;
     await controller.getId(username);
     if (controller.state == null || controller.state!.isEmpty) return;
@@ -168,14 +172,14 @@ class HomePage extends GetResponsiveView<HomeController> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Center(
-              child: Image.asset(
-                'images/logo.png',
-              ),
-            ),
-            const SizedBox(
-              height: Dimensions.l,
-            ),
+            // Center(
+            //   child: Image.asset(
+            //     'images/logo.png',
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: Dimensions.l,
+            // ),
             Material(
               elevation: 4.0,
               borderRadius: const BorderRadius.all(Radius.circular(16)),
@@ -203,16 +207,16 @@ class HomePage extends GetResponsiveView<HomeController> {
     return CustomScaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
-          final width = min(constraints.maxWidth / 2, 584);
+          final width = max(constraints.maxWidth / 2, 584);
           final height = constraints.maxHeight / 3;
           return _buildSearchBar(context, width, height);
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: showLanguagesDialog,
-        tooltip: AppStrings.languages.tr,
-        child: const Icon(Icons.language),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: showLanguagesDialog,
+      //   tooltip: AppStrings.languages.tr,
+      //   child: const Icon(Icons.language),
+      // ),
     );
   }
 
@@ -226,11 +230,11 @@ class HomePage extends GetResponsiveView<HomeController> {
           return _buildSearchBar(context, width, height);
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: showLanguagesDialog,
-        tooltip: AppStrings.languages.tr,
-        child: const Icon(Icons.language),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: showLanguagesDialog,
+      //   tooltip: AppStrings.languages.tr,
+      //   child: const Icon(Icons.language),
+      // ),
     );
   }
 }

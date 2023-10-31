@@ -44,9 +44,9 @@ class MyApp extends StatelessWidget {
       ),
       unknownRoute: AppRoutes.fallback,
       getPages: AppRoutes.pages,
-      initialRoute: AppRoutes.main,
+      initialRoute: AppRoutes.home,
       translations: Localization(),
-      locale: const Locale('vi'),
+      locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
     );
   }

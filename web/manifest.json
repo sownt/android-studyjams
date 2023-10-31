@@ -1,11 +1,11 @@
 {
-    "name": "ChienBinhAndroid - Profile Validator",
+    "name": "JuaraAndroid - Profile Validator",
     "short_name": "Profile Validator",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Validator for ChienBinhAndroid - Google Study Jams.",
+    "description": "Validator for JuaraAndroid - Google Study Jams.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
