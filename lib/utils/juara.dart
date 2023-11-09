@@ -12,8 +12,8 @@ class Pathway extends Requirement {
 
   Pathway({required super.title, super.url, this.img, this.badgeName, this.earnedOn});
 
-  DateTime start = DateTime.utc(2023, 10, 7);
-  DateTime end = DateTime.utc(2023, 11, 4, 23, 59, 59);
+  DateTime start = DateTime.utc(2023, 10, 7).subtract(const Duration(hours: 9));
+  DateTime end = DateTime.utc(2023, 11, 4, 23, 59, 59).subtract(const Duration(hours: 9));
 
   bool isValid() {
     if (earnedOn == null) return false;
@@ -26,7 +26,7 @@ class Pathway extends Requirement {
   }
 
   String getBadgeName() {
-    return badgeName?.toLowerCase().replaceAll(' ', '_').replaceAll(',', '') ?? title.toLowerCase().replaceAll(' ', '_').replaceAll(',', '');
+    return badgeName?.toLowerCase() ?? title.toLowerCase();
   }
 }
 

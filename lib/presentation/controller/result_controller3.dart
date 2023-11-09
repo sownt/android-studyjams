@@ -56,19 +56,14 @@ class ResultController3 extends GetxController
         final course = r as Course;
         for (var pathway in course.pathways ?? <Pathway>[]) {
           final matched = awards.firstWhere(
-            (award) =>
-                award.title
-                    ?.toLowerCase()
-                    .replaceAll(' ', '_')
-                    .replaceAll(',', '') ==
-                pathway.getBadgeName(),
+            (award) => award.title?.toLowerCase() == pathway.getBadgeName(),
             orElse: () => Award(null, null, null),
           );
           pathway.earnedOn = matched.createTime;
           if (pathway.earnedOn != null && pathway.isValid()) {
-            if (path1.contains(pathway.getBadgeName().replaceAll('_', ' '))) {
+            if (path1.contains(pathway.getBadgeName())) {
               path1Count++;
-            } else if (path2.contains(pathway.getBadgeName().replaceAll('_', ' '))) {
+            } else if (path2.contains(pathway.getBadgeName())) {
               path2Count++;
             }
           }
@@ -76,15 +71,17 @@ class ResultController3 extends GetxController
       } else if (r.runtimeType == Pathway) {
         final pathway = r as Pathway;
         final matched = awards.firstWhere(
-          (award) =>
-              award.title
-                  ?.toLowerCase()
-                  .replaceAll(' ', '_')
-                  .replaceAll(',', '') ==
-              pathway.getBadgeName(),
+          (award) => award.title?.toLowerCase() == pathway.getBadgeName(),
           orElse: () => Award(null, null, null),
         );
         pathway.earnedOn = matched.createTime;
+        if (pathway.earnedOn != null && pathway.isValid()) {
+          if (path1.contains(pathway.getBadgeName())) {
+            path1Count++;
+          } else if (path2.contains(pathway.getBadgeName())) {
+            path2Count++;
+          }
+        }
       }
     }
     path1Badges = path1Count;

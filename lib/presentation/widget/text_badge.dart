@@ -57,7 +57,6 @@ class TextBadge extends StatelessWidget {
         style: TextStyle(
           fontSize: 12,
           color: textColor,
-          fontWeight: FontWeight.bold,
         ),
       ),
     );

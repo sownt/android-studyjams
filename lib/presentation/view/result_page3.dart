@@ -15,7 +15,8 @@ import 'package:url_launcher/url_launcher.dart';
 const githubUrl = 'https://github.com/sownt/android-studyjams';
 const juaraUrl = 'https://juara.sownt.com';
 const chienBinhAndroidUrl = 'https://chienbinhandroid.sownt.com';
-const completionForm = 'https://docs.google.com/forms/d/e/1FAIpQLSe5jDAHa7GCbSAul7neFdW-aghNiRMJWzu71OF_2SpORnHPLg/viewform';
+const completionForm =
+    'https://docs.google.com/forms/d/e/1FAIpQLSe5jDAHa7GCbSAul7neFdW-aghNiRMJWzu71OF_2SpORnHPLg/viewform';
 
 class ResultPage3 extends GetResponsiveView<ResultController3> {
   ResultPage3({super.key}) {
@@ -106,25 +107,31 @@ class ResultPage3 extends GetResponsiveView<ResultController3> {
                     children: [
                       ListTile(
                         title: const Text('Tier 1'),
-                        trailing: TextBadge(
-                          text: '${controller.path1Badges}/14',
-                          color: controller.path1Badges == 0
-                              ? AppColors.red
-                              : controller.path1Badges < 14
-                                  ? AppColors.yellow
-                                  : AppColors.green,
-                        ),
+                        trailing: controller.path1Badges == 0
+                            ? TextBadge.error(
+                                text: '${controller.path1Badges}/14',
+                              )
+                            : controller.path1Badges < 14
+                                ? TextBadge.yellow(
+                                    text: '${controller.path1Badges}/14',
+                                  )
+                                : TextBadge.green(
+                                    text: '${controller.path1Badges}/14',
+                                  ),
                       ),
                       ListTile(
                         title: const Text('Tier 2'),
-                        trailing: TextBadge(
-                          text: '${controller.path2Badges}/25',
-                          color: controller.path2Badges == 0
-                              ? AppColors.red
-                              : controller.path2Badges < 25
-                                  ? AppColors.yellow
-                                  : AppColors.green,
-                        ),
+                        trailing: controller.path2Badges == 0
+                            ? TextBadge.error(
+                                text: '${controller.path2Badges}/25',
+                              )
+                            : controller.path2Badges < 25
+                                ? TextBadge.yellow(
+                                    text: '${controller.path2Badges}/25',
+                                  )
+                                : TextBadge.green(
+                                    text: '${controller.path2Badges}/25',
+                                  ),
                       ),
                       ListTile(
                         title: const Text('Overall'),
