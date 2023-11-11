@@ -95,9 +95,11 @@ class ResultPage3 extends GetResponsiveView<ResultController3> {
                       children: [
                         const Text('Your Progress'),
                         TextBadge(
-                          text: timeLeft <= 1
-                              ? '$timeLeft day left'
-                              : '$timeLeft days left',
+                          text: timeLeft <= 0
+                              ? 'ended'
+                              : timeLeft == 1
+                                  ? '$timeLeft day left'
+                                  : '$timeLeft days left',
                           color:
                               timeLeft <= 1 ? AppColors.red : AppColors.yellow,
                         )
@@ -181,7 +183,8 @@ class ResultPage3 extends GetResponsiveView<ResultController3> {
                               (pathway) {
                                 final earnedOn = pathway.earnedOn != null
                                     ? DateFormat('MMM d, yyyy').format(
-                                        DateTime.parse(pathway.earnedOn!),
+                                        DateTime.parse(pathway.earnedOn!)
+                                            .toLocal(),
                                       )
                                     : null;
                                 return ListTile(
@@ -227,7 +230,7 @@ class ResultPage3 extends GetResponsiveView<ResultController3> {
               final pathway = state![index] as Pathway;
               final earnedOn = pathway.earnedOn != null
                   ? DateFormat('MMM d, yyyy').format(
-                      DateTime.parse(pathway.earnedOn!),
+                      DateTime.parse(pathway.earnedOn!).toLocal(),
                     )
                   : null;
               return Center(
@@ -356,7 +359,6 @@ class ResultPage3 extends GetResponsiveView<ResultController3> {
                 child: const Icon(Icons.open_in_new),
               ),
             ),
-            const Spacer(),
             ListTile(
               title: const Text('GitHub repo'),
               onTap: () async {

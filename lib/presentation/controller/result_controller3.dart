@@ -56,7 +56,9 @@ class ResultController3 extends GetxController
         final course = r as Course;
         for (var pathway in course.pathways ?? <Pathway>[]) {
           final matched = awards.firstWhere(
-            (award) => award.title?.toLowerCase() == pathway.getBadgeName(),
+            (award) =>
+                award.title?.toLowerCase() == pathway.getBadgeName() &&
+                award.pathwayUrl?.trim() == pathway.url?.trim(),
             orElse: () => Award(null, null, null),
           );
           pathway.earnedOn = matched.createTime;

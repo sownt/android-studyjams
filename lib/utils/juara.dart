@@ -10,18 +10,26 @@ class Pathway extends Requirement {
   final String? badgeName;
   String? earnedOn;
 
-  Pathway({required super.title, super.url, this.img, this.badgeName, this.earnedOn});
+  Pathway(
+      {required super.title,
+      super.url,
+      this.img,
+      this.badgeName,
+      this.earnedOn});
 
   DateTime start = DateTime.utc(2023, 10, 7).subtract(const Duration(hours: 9));
   DateTime end = DateTime.utc(2023, 11, 4, 23, 59, 59).subtract(const Duration(hours: 9));
 
   bool isValid() {
     if (earnedOn == null) return false;
-    return DateTime.parse(earnedOn!).isAfter(start) && DateTime.parse(earnedOn!).isBefore(end);
+    return DateTime.parse(earnedOn!).isAfter(start) &&
+        DateTime.parse(earnedOn!).isBefore(end);
   }
 
   String getBadgeSvg() {
-    final name = badgeName?.toLowerCase().replaceAll(' ', '_').replaceAll(',', '') ?? title.toLowerCase().replaceAll(' ', '_').replaceAll(',', '');
+    final name =
+        badgeName?.toLowerCase().replaceAll(' ', '_').replaceAll(',', '') ??
+            title.toLowerCase().replaceAll(' ', '_').replaceAll(',', '');
     return 'https://cdn.sownt.com/badges/$name.svg';
   }
 
@@ -47,6 +55,34 @@ class Course extends Requirement {
   }
 }
 
+final List<String> urls = [
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-1',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-2',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-3',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-1',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-2',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-3',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-1',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-2',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-3',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-4-pathway-1',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-4-pathway-2',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-4-pathway-3',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-5-pathway-1',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-5-pathway-2',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-6-pathway-1',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-6-pathway-2',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-6-pathway-3',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-7-pathway-1',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-8-pathway-1',
+  'https://developer.android.com/courses/pathways/android-basics-compose-unit-8-pathway-2',
+  'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-1',
+  'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-2',
+  'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-3',
+  'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-4',
+  'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-5'
+];
+
 final List<Requirement> requirements = [
   Course(
     title: 'Your first Android app',
@@ -56,19 +92,19 @@ final List<Requirement> requirements = [
       Pathway(
         title: 'Introduction to Kotlin',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-1',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-1',
         badgeName: 'introduction to programming in kotlin',
       ),
       Pathway(
         title: 'Setup Android Studio',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-2',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-2',
         badgeName: 'set up android studio',
       ),
       Pathway(
         title: 'Build a basic layout',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-3',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-3',
       ),
     ],
   ),
@@ -80,19 +116,18 @@ final List<Requirement> requirements = [
       Pathway(
         title: 'Kotlin fundamentals',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-1',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-2', // 'https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-1',
       ),
       Pathway(
         title: 'Add a button to an app',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-2',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-2',
       ),
       Pathway(
-        title: 'Interact with UI and state',
-        url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-3',
-        badgeName: 'interacting with ui and state'
-      ),
+          title: 'Interact with UI and state',
+          url:
+              'https://developer.android.com/courses/pathways/android-basics-compose-unit-2-pathway-3',
+          badgeName: 'interacting with ui and state'),
     ],
   ),
   Course(
@@ -103,19 +138,18 @@ final List<Requirement> requirements = [
       Pathway(
         title: 'More Kotlin fundamentals',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-1',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-2', // 'https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-1',
       ),
       Pathway(
         title: 'Build a scrollable list',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-2',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-3', // 'https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-2',
       ),
       Pathway(
-        title: 'Build beautiful apps',
-        url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-3',
-        badgeName: 'add theme and animation'
-      ),
+          title: 'Build beautiful apps',
+          url:
+              'https://developer.android.com/courses/pathways/android-basics-compose-unit-3-pathway-3',
+          badgeName: 'add theme and animation'),
     ],
   ),
   Course(
@@ -126,17 +160,17 @@ final List<Requirement> requirements = [
       Pathway(
         title: 'Architecture Components',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-4-pathway-1',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-4-pathway-1',
       ),
       Pathway(
         title: 'Navigation in Jetpack Compose',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-4-pathway-2',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-4-pathway-2',
       ),
       Pathway(
         title: 'Adapt for different screen sizes',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-4-pathway-3',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-4-pathway-3',
         badgeName: 'adaptive layouts',
       ),
     ],
@@ -149,12 +183,12 @@ final List<Requirement> requirements = [
       Pathway(
         title: 'Get data from the internet',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-5-pathway-1',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-5-pathway-1',
       ),
       Pathway(
         title: 'Load and display images from the internet',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-5-pathway-2',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-5-pathway-2',
       ),
     ],
   ),
@@ -166,17 +200,17 @@ final List<Requirement> requirements = [
       Pathway(
         title: 'Introduction to SQL',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-6-pathway-1',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-6-pathway-1',
       ),
       Pathway(
         title: 'Use Room for data persistence',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-6-pathway-2',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-6-pathway-2',
       ),
       Pathway(
         title: 'Store and access data using keys with DataStore',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-6-pathway-3',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-6-pathway-3',
       ),
     ],
   ),
@@ -188,7 +222,7 @@ final List<Requirement> requirements = [
       Pathway(
         title: 'Schedule tasks with WorkManager',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-7-pathway-1',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-7-pathway-1',
       ),
     ],
   ),
@@ -200,38 +234,38 @@ final List<Requirement> requirements = [
       Pathway(
         title: 'Android Views and Compose in Views',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-8-pathway-1',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-8-pathway-1',
       ),
       Pathway(
         title: 'Views in Compose',
         url:
-        'https://developer.android.com/courses/pathways/android-basics-compose-unit-8-pathway-2',
+            'https://developer.android.com/courses/pathways/android-basics-compose-unit-8-pathway-2',
       ),
     ],
   ),
   Pathway(
     title: 'Compose essentials',
     url:
-    'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-1',
+        'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-1',
   ),
   Pathway(
     title: 'Layouts, theming, and animation',
     url:
-    'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-2',
+        'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-2',
   ),
   Pathway(
     title: 'Architecture and state',
     url:
-    'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-3',
+        'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-3',
   ),
   Pathway(
     title: 'Accessibility, testing, and performance',
     url:
-    'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-4',
+        'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-4',
   ),
   Pathway(
     title: 'Form factors',
     url:
-    'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-5',
+        'https://developer.android.com/courses/pathways/jetpack-compose-for-android-developers-5',
   ),
 ];
